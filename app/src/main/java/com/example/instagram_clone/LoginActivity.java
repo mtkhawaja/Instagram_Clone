@@ -45,6 +45,7 @@ import static android.Manifest.permission.READ_CONTACTS;
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity {
+
     /** Debug Tag*/
     private static final String TAG = "LoginActivity";
 
@@ -57,6 +58,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        if(persistenceCheck())
+            goMainActivity();
         setContentView(R.layout.activity_login);
         bind();
 
@@ -65,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
     private void bind(){
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
+        Button register = findViewById(R.id.register);
         Button loginBtn = findViewById(R.id.loginBtn);
         loginBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -74,6 +78,17 @@ public class LoginActivity extends AppCompatActivity {
                 login(usernameTxt, passwordTxt);
             }
         });
+        register.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i;
+                i = new Intent(v.getContext(), SignupActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+
     } //Bind
 
     private  void login(String username, String password){
@@ -96,6 +111,11 @@ public class LoginActivity extends AppCompatActivity {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         finish();
+    }
+
+    private boolean persistenceCheck(){
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        return (currentUser != null);
     }
 
 } //Class

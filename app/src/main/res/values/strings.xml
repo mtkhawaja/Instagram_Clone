@@ -5,7 +5,7 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Username</string>
     <string name="prompt_password">Password </string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in">Sign In </string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
@@ -17,4 +17,9 @@
     <string name="description">Description</string>
     <string name="submit">Submit</string>
     <string name="take_picture">Take Picture</string>
+    <string name="example_alpharius4567">example: alpharius4567</string>
+    <string name="example_alpharius_gmail_com">example: alpharius@gmail.com</string>
+    <string name="create_a_strong_password">Create a Strong Password.</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="user_name">User Name:</string>
 </resources>
