@@ -1,6 +1,9 @@
 package com.example.instagram_clone;
 import android.app.Application;
+
+import com.example.instagram_clone.Models.Post;
 import com.parse.Parse;
+import com.parse.ParseObject;
 
 public class ParseApplication extends Application {
     private static final String appId     = "mtkhawaja-instagram-codepath";
@@ -9,7 +12,7 @@ public class ParseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        ParseObject.registerSubclass(Post.class);
         // set applicationId, and server server based on the values in the Heroku settings.
         // clientKey is not needed unless explicitly configured
         // any network interceptors must be added with the Configuration Builder given this syntax
