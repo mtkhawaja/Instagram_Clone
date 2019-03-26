@@ -33,8 +33,8 @@ GIF created with [ShareX](https://getsharex.com/).
 
 ## Notes
 I was trying to implement a much sleeker and nicer looking action bar, however, I faced diffeculties resizing menu item buttons and was unable to implement everything.
-Most of the trouble I faced was encountered while setting up the Parse Server. On the Console, it would say that the Parse server is running at http://0.0.0.0:4040/
-,however, that resulted in a ERR_ADDRESS_INVALID. It took me a while before figuring out that the Parse Dashboard was available at http://localhost:4040/.
+Most of the trouble I faced was encountered while setting up the Parse Server. On the Console, it would say that the Parse Dashboard is running at http://0.0.0.0:4040/
+,however, that resulted in a ERR_ADDRESS_INVALID. It took me a while before figuring out that the Parse Dashboard was available at http://localhost:4040/ and not http://0.0.0.0:4040/.
 
 ## Open-source libraries used
 
