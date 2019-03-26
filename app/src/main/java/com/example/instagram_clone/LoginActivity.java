@@ -22,6 +22,8 @@ import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -30,6 +32,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.Parse;
@@ -118,5 +121,28 @@ public class LoginActivity extends AppCompatActivity {
         return (currentUser != null);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        // Tapped on Compose Icon
+
+        /*
+        if(item.getItemId() == R.id.instagram_logo_action){
+            // Navigate to new activities.
+            return true;
+        }*/
+
+
+        if(item.getItemId() == R.id.logout){
+            finishAndRemoveTask();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 } //Class
 
