@@ -7,7 +7,10 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,13 +35,14 @@ import java.io.File;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    /** UI References*/
     private EditText    description;
-    private Button      takePicture;
-    private Button      submit     ;
     private ImageView   imgUp;
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
-    private String photoFileName = "photo.jpg";
+
+    /**Variable required for Posting*/
     private File photoFile;
+    /**Debug/Log Variable */
     private String      TAG        = "MAIN_ACTIVITY";
 
     @Override
@@ -46,13 +50,41 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bind();
+        setBottomNavigationView();
         //  queryPosts();
     }
 
-    void bind(){
+    private void setBottomNavigationView(){
+        /**Bottom Navigation Variables*/
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                Fragment fragment;
+                switch (menuItem.getItemId()) {
+                    case R.id.action_home:
+                        // do something here
+                        break;
+
+                    case R.id.action_compose:
+                        // do something here
+                        break;
+                    case R.id.action_profile:
+                        // do something here
+                        break;
+                    default:
+                        return true;
+                }
+                return true;
+            }
+        });
+    } // Set Bottom Navigation View.
+
+    private void bind(){
         description = findViewById(R.id.description );
-        takePicture = findViewById(R.id.takePicBtn  );
-        submit      = findViewById(R.id.submitBtn   );
+        Button takePicture = findViewById(R.id.takePicBtn);
+        Button submit = findViewById(R.id.submitBtn);
         imgUp       = findViewById(R.id.imgUp       );
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
         }); //takePicture onClick Listener
 
     } //bind
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -97,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
         // create Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Create a File reference to access to future access
+        /** Variables for Posting*/
+        String photoFileName = "photo.jpg";
         photoFile = getPhotoFileUri(photoFileName);
 
         // wrap File object into a content provider
@@ -146,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 imgUp.setImageResource(0);
             }// done
         });
-    }
+    } // savePost
     private void queryPosts(){
         ParseQuery<Post> postQuery = new ParseQuery<Post>(Post.class);
         postQuery.include(Post.KEY_USER);
@@ -164,30 +197,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }// queryPosts
-        /** Menu Methods*/
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
+
+    /** Menu Methods*/
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
             // Inflate the menu; this adds items to the action bar if it is present
             getMenuInflater().inflate(R.menu.menu_main, menu);
             return true;
-        }
-
+        } // onCreateOptionsMenu
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        // Tapped on Compose Icon
-        /*
-        if(item.getItemId() == R.id.instagram_logo_action){
-            // Navigate to new activities.
-            return true;
-        }*/
+            // Tapped on Compose Icon
+            /*
+            if(item.getItemId() == R.id.instagram_logo_action){
+                // Navigate to new activities.
+                return true;
+            }*/
 
-        if(item.getItemId() == R.id.logout){
-            ParseUser.logOut();
-            Intent i = new Intent(this, LoginActivity.class);
-            startActivity(i);
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
+            if(item.getItemId() == R.id.logout){
+                ParseUser.logOut();
+                Intent i = new Intent(this, LoginActivity.class);
+                startActivity(i);
+                finish();
+            }
+            return super.onOptionsItemSelected(item);
+        } //onOptionsItemSelected
 
 }// Class

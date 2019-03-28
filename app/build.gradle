@@ -40,5 +40,10 @@ dependencies {
     // for logging API calls to LogCat
     implementation 'com.github.parse-community.Parse-SDK-Android:parse:1.18.5'
 
-    implementation 'com.android.support:appcompat-v7:28.0'
+    //Fragment and Navigation
+    implementation "com.android.support:appcompat-v7:28"
+    implementation "com.android.support:design:28"
+
+    //Compatibility Library
+    implementation 'com.android.support:appcompat-v7:28'
 }

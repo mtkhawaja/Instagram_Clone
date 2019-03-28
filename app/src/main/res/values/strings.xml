@@ -26,4 +26,7 @@
     <string name="home">home</string>
     <string name="email_address">Email Address:</string>
     <string name="description_caption">Description/Caption</string>
+    <string name="edit">Edit</string>
+    <string name="profile">Profile</string>
+    <string name="homeBotNav">Home</string>
 </resources>

@@ -19,6 +19,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -65,6 +66,13 @@ public class LoginActivity extends AppCompatActivity {
             goMainActivity();
         setContentView(R.layout.activity_login);
         bind();
+
+        /** Tool Bar Code */
+        // Find the toolbar view inside the activity layout
+        Toolbar toolbar =  findViewById(R.id.toolbar);
+        // Sets the Toolbar to act as the ActionBar for this Activity window.
+        // Make sure the toolbar exists in the activity and is not null
+        setSupportActionBar(toolbar);
 
     }// OnCreate
 
