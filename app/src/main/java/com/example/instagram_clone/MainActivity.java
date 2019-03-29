@@ -1,38 +1,19 @@
 package com.example.instagram_clone;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
-import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.FileProvider;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.example.instagram_clone.Models.Post;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseFile;
-import com.parse.ParseQuery;
+import com.example.instagram_clone.Fragments.ComposeFragment;
+import com.example.instagram_clone.Fragments.PostsFragment;
+import com.example.instagram_clone.Fragments.ProfileFragment;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
-
-import java.io.File;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,29 +35,32 @@ public class MainActivity extends AppCompatActivity {
         /**Bottom Navigation Variables*/
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-
+            final FragmentManager fragmentManager = getSupportFragmentManager();
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                Fragment fragment;
+
+                final Fragment composeFragment = new ComposeFragment();
+                final Fragment postsFragment   = new PostsFragment  ();
+                final Fragment profileFragment = new ProfileFragment();
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
-                        // do something here
+                        fragmentManager.beginTransaction().replace(R.id.flContainer,postsFragment).commit();
                         break;
-
                     case R.id.action_compose:
-                        // do something here
+                        fragmentManager.beginTransaction().replace(R.id.flContainer,composeFragment).commit();
                         break;
                     case R.id.action_profile:
-                        // do something here
+                        fragmentManager.beginTransaction().replace(R.id.flContainer,profileFragment).commit();
                         break;
                     default:
                         return true;
                 }
                 return true;
-            }
-        });
+            } // onNavigationItemSelected
+        }); //setOnNavigationItemSelectedListener
+        // Default view
+        bottomNavigationView.setSelectedItemId(R.id.action_compose);
     } // Set Bottom Navigation View.
-
 
 
     /** Menu Methods*/
