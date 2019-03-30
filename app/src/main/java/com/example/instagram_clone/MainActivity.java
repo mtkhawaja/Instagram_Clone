@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             } // onNavigationItemSelected
         }); //setOnNavigationItemSelectedListener
         // Default view
-        bottomNavigationView.setSelectedItemId(R.id.action_compose);
+        bottomNavigationView.setSelectedItemId(R.id.action_home);
     } // Set Bottom Navigation View.
 
 

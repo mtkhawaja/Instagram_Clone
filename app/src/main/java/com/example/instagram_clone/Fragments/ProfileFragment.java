@@ -1,5 +1,6 @@
 package com.example.instagram_clone.Fragments;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 
 import com.example.instagram_clone.Models.Post;
@@ -42,4 +43,11 @@ public class ProfileFragment extends PostsFragment {
             }
         });
     }
-}
+
+    @Override
+    protected void refreshHomeTimeLine() {
+        super.adapter.clear();
+        queryPosts();
+        super.swipeContainer.setRefreshing(false);
+    }
+}//  Class
