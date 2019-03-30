@@ -1,6 +1,5 @@
 package com.example.instagram_clone.Models;
 
-import com.parse.Parse;
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -10,7 +9,9 @@ import com.parse.ParseUser;
 public class Post extends ParseObject {
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_IMAGE       = "image"      ;
-    public static final String KEY_USER        = "user";
+    public static final String KEY_USER        = "user"       ;
+    public static final String KEY_CREATED_AT  = "createdAt"  ;
+
     /** Getters and Setters */
 
     public  String getDescription() {

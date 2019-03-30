@@ -54,9 +54,12 @@ public class PostsFragment extends Fragment {
         queryPosts();
     }
 
-    private void queryPosts(){
+    protected void queryPosts(){
         ParseQuery<Post> postQuery = new ParseQuery<Post>(Post.class);
         postQuery.include(Post.KEY_USER);
+        int POST_LIMIT = 20;
+        postQuery.setLimit(POST_LIMIT);
+        postQuery.addDescendingOrder(Post.KEY_CREATED_AT);
         postQuery.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
