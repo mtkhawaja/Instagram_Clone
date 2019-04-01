@@ -30,4 +30,6 @@
     <string name="profile">Profile</string>
     <string name="homeBotNav">Home</string>
     <string name="ducks_like_bread">Ducks like bread.</string>
+    <string name="_8hrs_ago">8hrs ago</string>
+    <string name="user">User</string>
 </resources>

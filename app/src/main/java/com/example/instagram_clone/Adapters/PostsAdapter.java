@@ -13,8 +13,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.instagram_clone.Models.Post;
+import com.example.instagram_clone.Models.User;
 import com.example.instagram_clone.R;
+import com.parse.ParseFile;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -63,10 +67,12 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        /**ViewHolder Variables*/
-        private  TextView  tvName;
-        private  TextView  tvDescription;
-        private  ImageView tvPostImg;
+        /**UI References*/
+        private  TextView  tvName        ;
+        private  TextView  tvDescription ;
+        private  TextView  createdAt     ;
+        private  ImageView tvPostImg     ;
+        private  ImageView userProfilePic;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -74,18 +80,34 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
         } // ViewHolder Constructor
         private void getViews(View view){
-            tvName          = view.findViewById(R.id.tvName);
-            tvDescription   = view.findViewById(R.id.tvDescription);
-            tvPostImg         = view.findViewById(R.id.tvPostImg);
+            tvName          = view.findViewById(R.id.tvName            );
+            tvDescription   = view.findViewById(R.id.tvDescription     );
+            tvPostImg       = view.findViewById(R.id.tvPostImg         );
+            createdAt       = view.findViewById(R.id.createdAt         );
+            userProfilePic  = view.findViewById(R.id.userProfilePicture);
         } // Get Views
-        private void bind (Post post){
-            String imgURL  = post.getImage().getUrl();
+
+        private void bind (Post post) {
+
             tvName.setText(post.getUser().getUsername());
             tvDescription.setText(post.getDescription());
+            createdAt.setText((post.getCreatedAt()).toString());
+
+            String imgURL = post.getImage().getUrl();
+            String profileImgURL = post.getUser().getParseFile(User.getProfileImageKey()).getUrl();
+
             if (imgURL != null)
-                Glide.with(context).
-                        load(imgURL).
-                        into(tvPostImg);
+                Glide.with(context)
+                        .load(imgURL)
+                        .apply(new RequestOptions().override(0, 0))
+                        .apply(new RequestOptions().fitCenter())
+                        .into(tvPostImg);
+
+            if (profileImgURL != null)
+                Glide.with(context)
+                        .load(profileImgURL)
+                        .apply(new RequestOptions().override(150, 150))
+                        .into(userProfilePic);
         } // Bind
     } // ViewHolder Class
 } // Posts Adapter Class

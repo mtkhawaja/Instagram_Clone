@@ -3,24 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/logout"
-        android:icon="@android:drawable/ic_lock_power_off"
-        android:iconTint="@color/common_google_signin_btn_text_dark_default"
+        android:icon="@android:drawable/ic_notification_clear_all"
+        android:iconTint="@color/solid_white"
+        android:iconTintMode="src_over"
         android:orderInCategory="1"
         android:title="@string/logout"
-        app:showAsAction="ifRoom">
-
-    </item>
-
-    <item
-        android:id="@+id/instagram_logo_action"
-        android:checkable="true"
-        android:icon="@drawable/nux_dayone_landing_logo"
-        android:orderInCategory="0"
-        android:title="@string/home"
-        app:showAsAction="always"
-        tools:ignore="ExtraText">
-        @style/myActionButtonStyle
-    </item>
-
+        app:showAsAction="ifRoom" />
 
 </menu>

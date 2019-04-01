@@ -7,10 +7,11 @@ import com.parse.ParseUser;
 
 @ParseClassName("Post")
 public class Post extends ParseObject {
-    public static final String KEY_DESCRIPTION = "description";
-    public static final String KEY_IMAGE       = "image"      ;
-    public static final String KEY_USER        = "user"       ;
-    public static final String KEY_CREATED_AT  = "createdAt"  ;
+    private static final String KEY_DESCRIPTION = "description";
+    private static final String KEY_IMAGE       = "image"      ;
+    public static final String KEY_USER        = "user"        ;
+    public static final String KEY_CREATED_AT  = "createdAt"   ;
+
 
     /** Getters and Setters */
 
@@ -29,7 +30,6 @@ public class Post extends ParseObject {
          put(KEY_IMAGE, image);
     }
 
-
     public ParseUser getUser() {
         return getParseUser(KEY_USER);
     }
@@ -37,4 +37,9 @@ public class Post extends ParseObject {
     public void setUser(ParseUser user) {
          put(KEY_USER, user);
     }
+
+    public static String getKeyCreatedAt() {
+        return KEY_CREATED_AT;
+    }
+
 } // Class

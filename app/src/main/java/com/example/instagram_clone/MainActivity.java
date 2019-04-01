@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -26,7 +27,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //bind();
         setBottomNavigationView();
-        //  queryPosts();
+
+        /** Tool Bar Code */
+        // Find the toolbar view inside the activity layout
+        Toolbar toolbar =  findViewById(R.id.toolbar);
+        // Sets the Toolbar to act as the ActionBar for this Activity window.
+        // Make sure the toolbar exists in the activity and is not null
+        setSupportActionBar(toolbar);
     } // On Create
 
     /** Bottom Nav */
@@ -72,12 +79,6 @@ public class MainActivity extends AppCompatActivity {
         } // onCreateOptionsMenu
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-            // Tapped on Compose Icon
-            /*
-            if(item.getItemId() == R.id.instagram_logo_action){
-                // Navigate to new activities.
-                return true;
-            }*/
 
             if(item.getItemId() == R.id.logout){
                 ParseUser.logOut();

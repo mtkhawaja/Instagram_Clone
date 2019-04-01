@@ -3,4 +3,19 @@
 xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
-android:background="?attr/colorPrimary"/>
+android:background="?attr/colorPrimary">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center">
+            <ImageView
+                android:id="@+id/toolbarLogo"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center"
+                android:src="@drawable/nux_dayone_landing_logo" />
+    </RelativeLayout>
+</android.support.v7.widget.Toolbar>
+
