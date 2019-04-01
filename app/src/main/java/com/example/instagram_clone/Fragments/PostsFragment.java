@@ -33,7 +33,7 @@ public class PostsFragment extends Fragment {
     /** Posts */
     protected List <Post>     mPosts;
     /**Debug/Log Variable */
-    private String      TAG        = "POSTS_FRAGMENT";
+    protected String      TAG        = "POSTS_FRAGMENT";
 
     @Nullable
     @Override
@@ -48,7 +48,7 @@ public class PostsFragment extends Fragment {
         swipeConfig(view);
     } // onViewCreated
 
-    private void recyclerViewConfig(View view){
+    protected void recyclerViewConfig(View view){
         rvPosts = view.findViewById(R.id.rvPosts);
         /* Create the data source */
         mPosts  = new ArrayList<>();
@@ -88,6 +88,7 @@ public class PostsFragment extends Fragment {
     }// queryPosts
 
     protected void swipeConfig(View view){
+
 
         swipeContainer =   view.findViewById(R.id.swipeContainer);
         // Setup refresh listener which triggers new data loading

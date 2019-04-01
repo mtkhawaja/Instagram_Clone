@@ -1,6 +1,8 @@
 package com.example.instagram_clone.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.instagram_clone.Models.Post;
 import com.example.instagram_clone.Models.User;
 import com.example.instagram_clone.R;
+import com.parse.Parse;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 
@@ -94,8 +97,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             createdAt.setText((post.getCreatedAt()).toString());
 
             String imgURL = post.getImage().getUrl();
-            String profileImgURL = post.getUser().getParseFile(User.getProfileImageKey()).getUrl();
-
+            ParseFile profileImg = post.getUser().getParseFile(User.getProfileImageKey());
+            String placeholder = "drawable/faimage";
             if (imgURL != null)
                 Glide.with(context)
                         .load(imgURL)
@@ -103,11 +106,17 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                         .apply(new RequestOptions().fitCenter())
                         .into(tvPostImg);
 
-            if (profileImgURL != null)
+            if (profileImg != null)
                 Glide.with(context)
-                        .load(profileImgURL)
+                        .load(profileImg.getUrl())
                         .apply(new RequestOptions().override(150, 150))
                         .into(userProfilePic);
+            else {
+                Glide.with(context)
+                        .load(profileImg)
+                        .apply(new RequestOptions().placeholder(R.color.black).centerCrop())
+                        .into(userProfilePic);
+            }
         } // Bind
     } // ViewHolder Class
 } // Posts Adapter Class
