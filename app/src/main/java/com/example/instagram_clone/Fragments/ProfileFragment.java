@@ -36,6 +36,7 @@ import com.parse.ParseUser;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -131,20 +132,18 @@ public class ProfileFragment extends PostsFragment {
                 Toast.makeText(getContext(), "One day the user will be able to add their profile picture",Toast.LENGTH_SHORT).show();
             }
         });
+        ParseFile profileImg = ParseUser.getCurrentUser().getParseFile(User.getProfileImageKey());
+        //Log.d(TAG, profileImg.getUrl());
 
-        ParseFile profileImgURL = ParseUser.getCurrentUser().getParseFile(User.getProfileImageKey());
-
-        if (profileImgURL != null )
+        if (profileImg != null)
             Glide.with(view.getContext())
-                    .load(profileImgURL.getUrl())
-                    .apply(new RequestOptions().override(300, 500))
+                    .load(profileImg.getUrl())
+                    .apply(new RequestOptions().override(150, 150))
                     .into(profileImage);
         else
         Glide.with(view.getContext())
                 .load("@drawable/faimage")
                 .apply(new RequestOptions().placeholder(R.color.black).centerCrop())
                 .into(profileImage);
-
-    }
-
+    }//User Profile bind
 }//  Class

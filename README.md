@@ -1,6 +1,49 @@
 # Instagram-Clone
 Submitted by: **Muneeb Khawaja**
 
+**Instagram-Clone Part 2** is a photo sharing app similar to Instagram but using Parse as its backend.
+
+Time spent: **6** hours spent in total
+
+## User Stories
+
+The following **required** functionality is completed:
+
+* [x] User can view the last 20 posts submitted to "Instagram".
+* [x] User can pull to refresh the last 20 posts submitted to "Instagram".
+* [x] The user should switch between different tabs - viewing all posts (feed view), capture (camera and photo gallery view) and profile tabs (posts made) using fragments and a Bottom Navigation View. (2 points)
+
+The following **optional** features are implemented:
+
+* [x] Show the username and creation time for each post.
+* [ ] User Profiles
+      * [ ] Allow the logged in user to add a profile photo
+      * [x] Display the profile photo with each post
+* [x] Run your app on your phone and use a custom camera view
+* [ ] User can tap a post to view post details, including timestamp and caption.
+* [ ] Style the feed to look like the real Instagram feed.
+* [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
+* [ ] Tapping on a post's username or profile photo goes to that user's profile page and shows a grid view of the user's posts
+* [ ] User can comment on a post and see all comments for each post in the post details screen.
+* [ ] User can like a post and see number of likes for each post in the post details screen.
+
+The following **additional** features are implemented:
+
+* [x] User attribute for Profile Pictures was added server-side. If a user has a profile image, it will be 
+	  displayed, other wise a black placeholder will be shown. 
+* [x] Replaced the action bar with a custom tool-bar. Moved the logout button to the tool-bar and added the Instagram logo to the tool bar. 
+* [x] Tweaked glide options to ensure a smoother image experience. (Overrides for dimensions, cropping etc.)
+* [x] Added a proof-of-concept static section to the profile fragment. This section has as placeholder: user biography. 
+
+
+## Video Walkthrough
+
+<img src="Instagram_2.gif" title = 'Video Walkthrough_2' width='' alt='Video Walkthrough' ><br>
+GIF created with [ShareX](https://getsharex.com/).
+
+# Instagram-Clone
+Submitted by: **Muneeb Khawaja**
+
 **Instagram-Clone** is a photo sharing app similar to Instagram but using Parse as its backend.
 
 Time spent: **7** hours spent in total

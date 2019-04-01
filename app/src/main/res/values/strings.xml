@@ -33,4 +33,5 @@
     <string name="_8hrs_ago">8hrs ago</string>
     <string name="user">User</string>
     <string name="i_am_a_duck_i_like_bread">I am a duck. I like Bread</string>
+    <string name="compose">Compose</string>
 </resources>
