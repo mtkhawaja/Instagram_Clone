@@ -17,8 +17,8 @@ The following **optional** features are implemented:
 
 * [x] Show the username and creation time for each post.
 * [ ] User Profiles
-      * [ ] Allow the logged in user to add a profile photo
-      * [x] Display the profile photo with each post
+* [ ] Allow the logged in user to add a profile photo
+* [x] Display the profile photo with each post
 * [x] Run your app on your phone and use a custom camera view
 * [ ] User can tap a post to view post details, including timestamp and caption.
 * [ ] Style the feed to look like the real Instagram feed.
